@@ -1,0 +1,130 @@
+<!--
+    1.函数的定义和调用
+        函数也属于对象
+        1.1定义函数
+            1.自定义函数（命名函数）
+                function fn(){}
+            2.函数表达式（匿名函数）
+                var fun=function(){}
+            3.利用new Function('参数1','参数2','函数体')
+                var fun=new Function('console.log(123)')
+                fun();//调用
+        1.2调用函数
+                /* 1. 普通函数 */
+                    function fn() {
+                        console.log('人生的巅峰');
+                    }
+                    fn(); 
+                /* 2. 对象的方法 */
+                    var o = {
+                    sayHi: function() {
+                        console.log('人生的巅峰');
+                    }
+                    }
+                    o.sayHi();
+                /* 3. 构造函数*/
+                    function Star() {};
+                    new Star();
+                /* 4. 绑定事件函数*/
+                    btn.onclick = function() {};   // 点击了按钮就可以调用这个函数
+                /* 5. 定时器函数*/
+                    setInterval(function() {}, 1000);  这个函数是定时器自动1秒钟调用一次
+                /* 6. 立即执行函数(自调用函数)*/
+                    (function() {
+                        console.log('人生的巅峰');
+                    })();
+            
+    2.this
+        2.1函数内部的this指向
+            这些 this 的指向，是当我们调用函数的时候确定的。调用方式的不同决定了this 的指向不同
+            一般指向我们的调用者.
+
+        2.2改变函数内部 this 指向
+            1.call()
+                    call()方法调用一个对象。简单理解为调用函数的方式，但是它可以改变函数的 this 指向
+                        应用场景: 经常做继承.
+                        var o = {
+                            name: 'andy'
+                        }
+                        function fn(a, b) {
+                            console.log(this);
+                            console.log(a+b)
+                        };
+                        fn(1,2)// 此时的this指向的是window 运行结果为3
+                        fn.call(o,1,2)//此时的this指向的是对象o,参数使用逗号隔开,运行结果为3
+            2.bind()
+                    bind() 方法不会调用函数,但是能改变函数内部this 指向,返回的是原函数改变this之后产生的新函数
+                        如果只是想改变 this 指向，并且不想调用这个函数的时候，可以使用bind
+                        应用场景:不调用函数,但是还想改变this指向
+                        var o = {
+                        name: 'andy'
+                        };
+                        function fn(a, b) {
+                            console.log(this);
+                            console.log(a + b);
+                        };
+                        var f = fn.bind(o, 1, 2); //此处的f是bind返回的新函数
+                        f();//调用新函数  this指向的是对象o 参数使用逗号隔开
+            3.apply()
+                    apply() 方法调用一个函数。简单理解为调用函数的方式，但是它可以改变函数的 this 指向。
+                        应用场景: 经常跟数组有关系
+                        var o = {
+                            name: 'andy'
+                        }
+                        function fn(a, b) {
+                            console.log(this);
+                            console.log(a+b)
+                        };
+                        fn()// 此时的this指向的是window 运行结果为3
+                        fn.apply(o,[1,2])//此时的this指向的是对象o,参数使用数组传递 运行结果为3
+            call、apply、bind三者的异同
+                共同点 : 都可以改变this指向
+                不同点:
+                    call 和 apply 会调用函数, 并且改变函数内部this指向.
+                    call 和 apply传递的参数不一样,call传递参数使用逗号隔开,apply使用数组传递
+                    bind 不会调用函数, 可以改变函数内部this指向.
+                    应用场景
+                    call 经常做继承.
+                    apply经常跟数组有关系. 比如借助于数学对象实现数组最大值最小值
+                    bind 不调用函数,但是还想改变this指向. 比如改变定时器内部的this指向.
+            
+    3.严格模式
+            开启严格模式
+                情况一 :为脚本开启严格模式
+                        (function (){
+                        //在当前的这个自调用函数中有开启严格模式，当前函数之外还是普通模式
+                        　　　　"use strict";
+                            var num = 10;
+                        　　　　function fn() {}
+                        })();
+                        //或者 
+                        <script>
+                        　"use strict"; //当前script标签开启了严格模式
+                        </script>
+                        <script>
+                                    //当前script标签未开启严格模式
+                        </script>
+                情况二 :为函数开启严格模式
+                        function fn(){
+                    　　"use strict";
+                    　　return "123";
+                    } 
+                    //当前fn函数开启了严格模式
+    4，高阶函数
+        高阶函数是对其他函数进行操作的函数，它接收函数作为参数或将函数作为返回值输出。
+        此时fn 就是一个高阶函数
+        函数也是一种数据类型，同样可以作为参数，传递给另外一个参数使用。最典型的就是作为回调函数。
+        同理函数也可以作为返回值传递回来
+    5.闭包
+        变量的作用域复习
+            变量根据作用域的不同分为两种：全局变量和局部变量。
+            函数内部可以使用全局变量。
+            函数外部不可以使用局部变量。
+            当函数执行完毕，本作用域内的局部变量会销毁。
+        什么是闭包
+            闭包（closure）指有权访问另一个函数作用域中变量的函数。简单理解就是 ，一个作用域可以访问另外一个函数内部的局部变量。
+
+    6.递归
+        如果一个函数在内部调用其本身，那么这个函数就是递归函数
+
+-->

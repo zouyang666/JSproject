@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<!-- 
+    事件
+        1.注册事件
+            单个事件注册
+                element.事件(function(){})
+        2.事件处理 
+            1.绑定多个事件
+                element.on({
+                    事件1:function(){},
+                    事件2:function(){},
+                    ...
+                })
+            委派事件:click绑定在ul上，但触发的对象是ul下的li
+                ul.on("click","li",function(){})
+
+            element.one() 绑定的事件只会触发一次
+            2.解绑事件off()
+                element.off()
+            3.自动触发事件trigger()
+                3.1 element.click();
+                3.2 element.trigger("type") type比如click
+                3.3 element.triggerHandler("click") 不会触发事件的默认行为
+        3，事件对象
+                
+            
+                
+
+-->
+<body>
+    
+</body>
+</html>

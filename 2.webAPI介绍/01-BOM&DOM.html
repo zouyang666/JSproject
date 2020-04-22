@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        1.DOM介绍
+            01、DOM简介
+                编程接口
+                元素：页面中的所有标签都是元素（element）
+                节点：网页中的所有内容都是节点（标签，属性，文本，注释）node表示
+            02、获取元素
+                a.根据ID获取
+                    getElementById()
+                        注意：返回的是一个元素对象
+                        console.dir(app);打印返回的元素对象，更好的查看里面的属性和方法
+                b.标签名获取
+                    getElementByTagName()
+                        注意：返回指定标签名的对象的集合
+                        element.getElementByTagName()获取某个标签（元素）下的标签的对象的集合
+                c.通过HTML5新增的方法获取
+                    document.getElementsByClassName()通过类名获取元素对象集合
+                    
+                    document.querySelector('选择器');根据指定选择器返回第一个元素对象 选择器需要加符号
+                    
+                    document.querySelectorAll('选择器')返回所有指定选择器的元素对象集合
+                d.获取页面中特殊的元素
+                    获取body元素
+                        document.body; 返回元素对象
+                    获取html元素
+                        document.ducumentElement;返回html元素对象
+
+            03、事件基础
+                事件由三部分组成：事件源   事件类型  事件处理程序
+                    事件源：事件被触发的对象 谁 按钮
+                        var btn=document.getElementById('btn');
+                    事件类型：如何触发，比如鼠标点击  鼠标经过  键盘按下
+                    事件处理程序 通过函数赋值的方式完成
+                    举例：
+                        btn.onclick=function(){
+                            alert('点击');
+                        }
+                常见的鼠标事件：
+                        onclick   点击
+                        onmouseover   鼠标经过
+
+            04、操作元素
+                    1.改变元素的内容
+                        element.innerText 只显示内容不显示标签
+                        element.innerHTML 显示标签和内容
+                        注意：同时可以获取值console.log(element.innerHTML);会返回元素中的内容
+                    2.改变元素中的属性的内容
+                        src  href  id  alt  title
+                        element.src='';
+                        element.title=''；
+                    3.表单元素的属性操作
+                        type  value   checked   selected  disabled
+                        element.value='';
+                    4.样式属性操作
+                        大小  颜色  位置
+                        element.style  行内样式操作
+                            element.style.backgroundColor='';
+                        element.className  类名样式操作 更改元素的类名覆盖原来的
+                    5. 获取元素的属性值
+                        element.属性 元素本身自带的属性
+                        element.getAttribute('属性')自定义属性
+                    6.更改属性值
+                        element.属性='值';
+                        element.setAttribute('属性','值')；
+                    7.移除属性
+                        element.removeAttribute('属性');
+                    8.H5自定义属性
+                        data-开头
+                        <div data-index="1">
+            05、节点操作
+                nodeType nodeName  nodeValue
+                
+                元素节点  nodeType为1
+                属性节点  nodeType为2
+                文本节点  nodeType为3
+
+                节点层级
+                    1.父级节点
+                        node.parpentNode
+                    2.子节点
+                        parentNode.childNodes 包括所有的节点类型
+                        parentNode.children   所有元素节点
+
+                        parentNode.firstChild  返回第一个子节点 不管是文本还是元素节点
+                        parentNode.lastChild   返回最后一个子节点不管是文本还是元素节点
+
+                        parentNode.firstElementChild返回第一个子节点
+                        parentNode.lastElementChild返回最后一个子节点
+
+                        实际开发时的
+                        parentNode.children[数值]
+                    3.兄弟节点
+                        node.nextSibling 下一个兄弟节点包含元素节点或文本节点
+                        node.previousSibling 上一个兄弟节点包括元素节点或文本节点
+                        
+                        node.nextElementSibling 下一个兄弟节点元素节点
+                        node.previousElementSibling 上一个兄弟节点
+                    4.创建节点
+                            document.createElement('')
+                    5.添加节点
+                            node.appendChild(child)
+                            node.insertBefore(child,指定元素)
+                    6.删除节点
+                            node.removeChild(child)
+                    7.复制节点（克隆节点）
+                            node.cloneNode();括号为空或者里面时false，浅拷贝  只复制标签不复制里面的内容
+                            node.cloneNode(true);深拷贝
+                三种创建元素方式的区别
+                        1.document.write('')
+                        2.innerHTML
+                        3.document.createElement()
+    -->
+    <div id="app">
+        验证获取元素
+    </div>
+    <ul>
+        <li>验证获取标签元素</li>
+        <li>验证获取标签元素</li>
+        <li>验证获取标签元素</li>
+        <li>验证获取标签元素</li>
+        <li>验证获取标签元素</li>
+    </ul>
+    <script>
+        var app=document.getElementById('app');
+        console.log(app);
+        console.log(typeof app);
+        console.dir(app);
+        document.querySelector('#app');
+        document.getElementsByClassName()
+        var lis=document.getElementsByTagName('li');
+        console.log(lis);
+        document.querySelectorAll()
+    </script>
+</body>
+</html>

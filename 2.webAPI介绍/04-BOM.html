@@ -1,0 +1,57 @@
+<!-- 
+    BOM概述
+        浏览器对象模型
+        window对象是浏览器顶级对象 全局的
+        1，窗口加载事件
+            window.onload=function(){}
+            或 window.addEventListener('load',function(){})
+            或document.addEventListener('DOMContentLoaded',function(){})
+        2.调整窗口大小事件
+            window.onresize=function(){}
+            或window.addEventListener('resize',function(){});
+            其中window.innerWidth为当前屏幕的宽度
+        3.定时器
+            setTimeout(调用函数，延时时间) 时间到后函数执行
+                可以给定时器加个名字var timer=setTimeout(调用函数，延时时间)
+                停止定时器
+                    window.clearTimeout(定时器的名字);
+            serInterval(调用函数，间隔时间)  反复调用函数
+                停止定时器
+                    window.clearInterval(定时器的名字);
+        4.js执行队列
+            js是单线程语言
+            同步和异步
+        5.location
+                localtion.href  获取或设置整个url
+                    localtion.host  返回主机（域名）
+                    localtion.port  返回端口号
+                    localtion.pathname  返回路径
+                localtion.search  返回参数
+                    localtion.hash   返回片段
+            localtion对象的方法：
+                assign('') 跳转页面
+                replace('') 替换当前页面跳转页面 不能返回
+                reload()  重新加载页面
+        6.navigator对象
+            包含有关浏览器的信息
+                if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                                                    window.location.href = "";     //手机
+                                                } else {
+                                                    window.location.href = "";     //电脑
+                                                }
+        7.history对象
+            back() 后退
+            forward()前进
+            go(参数)前进后退几个页面
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
